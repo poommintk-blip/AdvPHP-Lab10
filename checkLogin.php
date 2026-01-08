@@ -9,7 +9,7 @@ $_SESSION['userName'] = $userName;
 $_SESSION['passWord'] = $passWord;
 $_SESSION['guest'] = $guest;
 
-$sql = "select * from user where username = '$userName' and password = '$passWord'";
+$sql = "SELECT * FROM user WHERE username = '$userName' AND password = '$passWord'";
 $rs = mysqli_query($conn, $sql);
 $data = mysqli_fetch_array($rs);
 $_SESSION['user_type'] = $data['status'];
