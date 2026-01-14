@@ -17,7 +17,7 @@ $total = $_GET['total'];
 $sql = "INSERT INTO cart (username, c_id, price, size, amount, total) VALUES ('$username', '$c_id', '$price', '$size', '$amount', '$total')";
 $rs = mysqli_query($conn, $sql);
 
-//echo "Add to Cart Successful";
+// echo "Add to Cart Successful";
 echo "<script>alert('Add to Cart Successful'); window.location='costume.php'</script>";
 exit();
 ?>
