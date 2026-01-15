@@ -149,27 +149,27 @@
 		$o_id = $r2['o_id'];
 		echo $r2['o_id'];
 	}
-	// insert to orders 
+	// insert to orders
 	if ($i > 0) {
 		for ($j = 0; $j < $i; $j++) {
-			$sql_insert = "INSERT INTO orders (username, c_id, date_order, amount, total, order_status) VALUES ('$username', '$array_c_id[$j]', '$date_order', '$array_amount[$j]', '$array_total[$j]', '$order_status')";
+			$sql_insert = "INSERT INTO orders (o_id, c_id, c_name, username, date_order, price, amount, total, card_number, order_status) VALUES ($o_id+1, $array_c_id[$j], '$array_c_name[$j]', '$username', '$date_order', $array_price[$j], $array_amount[$j], $array_total[$j], '$card_number', 'Placed')";
 
-			$rs2 = mysqli_query($conn, $sql_insert); /*code for insert query*/
+			$rs2 = mysqli_query($conn, $sql_insert);
 			if (!$rs2)
 				echo "can not add: $o_id";
 
 			// update clothing cal amount of stock
 			$sql_Update = "Update cloth SET stock=$array_stock[$j]-$array_amount[$j] WHERE c_id = $array_c_id[$j]";
-			$rs_Update = mysqli_query($conn, $sql_Update); /*code for update query*/
-			if($rs_Update){
-				echo "<script>alert('Update Successful'); </script>";
-			}
+			$rs_Update = mysqli_query($conn, $sql_Update);
+			//if($rs_Update){
+			//	echo "<script>alert('Update Successful'); </script>";
+			//}
 		}
 		echo "<script>alert('Update Successful'); </script>";
 		// delete on cart where username = $username after placed orders
-		$sql_delete = "DELETE FROM cart WHERE username = '$username'"; /*code for delete data from cart*/
+		$sql_delete = "DELETE FROM cart WHERE username = '$username'";
 		if ($j > 0) {
-			$rs3 = mysqli_query($conn, $sql_delete); /*code for update query*/
+			$rs3 = mysqli_query($conn, $sql_delete);
 			if (!$rs3)
 				echo "can not delete";
 		}

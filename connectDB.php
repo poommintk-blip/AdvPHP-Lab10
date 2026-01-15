@@ -12,8 +12,8 @@ if (!$conn) {
 
 
 //if (mysqli_connect_error()) {
-	//echo "Connect falied : " . mysqli_connect_error();
+//	echo "Connect falied : " . mysqli_connect_error();
 //} else {
-	//echo "Connect Successfully.";
+//	echo "Connect Successfully.";
 //}
 ?>
