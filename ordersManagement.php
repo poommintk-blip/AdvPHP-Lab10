@@ -70,8 +70,9 @@
 	</div>
 
 	<?PHP
-	//code for connect db from file
-	$sql = "SELECT * FROM orders" or die("Error:" . mysqli_error($conn));
+	include("connectDB.php");
+	$sql = "SELECT o_id, date_order, SUM(amount), SUM(total), order_status 
+			FROM orders GROUP BY o_id, date_order" or die("Error:" . mysqli_error($conn));
 
 	$result = mysqli_query($conn, $sql);
 
@@ -117,7 +118,7 @@
 					<input type="hidden" name="o_id" value=<?PHP echo $rs['o_id']; ?> />
 					<td>
 						<font id="a3"> <select name="order_status" id="order_status">
-								<!--code for order status choices --> 
+								<option value="Paid">Paid</option>
 								<option value="Processing">Processing</option>
 								<option value="Sent">Sent</option>
 							</select> </font>
